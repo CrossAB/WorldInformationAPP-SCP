@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Add Font Awesome for icons -->
+    <style>
+        /* CSS for enhanced styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://imgs.search.brave.com/AmgMYFFcSEwy2Nm8587XN2HaTBZs38ksXJJPmrz5KuA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC9YcE81cjVq/LmpwZw'); /* Add your background image URL */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px; /* Increase font size */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.2); /* Add background color */
+            color: #fff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add shadow effect */
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 15px;
+            color: #fff;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease; /* Add transition effect */
+        }
+        a:hover {
+            color: #f0f0f0; /* Change color on hover */
+        }
+        .error {
+            color: red;
+        }
+        .logout-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Change background color to red */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background-color: #c82333; /* Darken the background color on hover */
+    color: #fff; /* Change text color on hover */
+}
+
+.logout-btn i {
+    margin-right: 5px; /* Add spacing between icon and text */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>World Information</h1>
+        <label for="country">Enter a country name:</label>
+        <input type="text" id="country" placeholder="Enter country name">
+        <button onclick="getCountryInfo()"><i class="fas fa-search"></i> Get Information</button> <!-- Add search icon -->
+        <div id="result"></div>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a> <!-- Add logout icon -->
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
