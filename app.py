@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 CORS(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
