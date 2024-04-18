@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import redirect, url_for, session
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
+import requests
 
 
 app = Flask(__name__, template_folder='templates')
@@ -25,7 +26,6 @@ def is_logged_in():
 @app.route('/')
 def index():
     if is_logged_in():
-        user = User.query.get(session['user_id'])
         return render_template('index.html')
     else:
         return redirect(url_for('login'))
