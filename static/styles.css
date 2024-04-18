@@ -28,14 +28,24 @@ label {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="email"],
-input[type="password"] {
-    width: 100%;
+input[type="password"], /* Apply style to password input */
+select {
+    width: calc(50% - 5px); /* Adjust width */
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: none;
     outline: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Styling for dropdown options */
+select option {
+    color: #000; /* Change text color to black */
 }
 
 button {
@@ -54,14 +64,67 @@ button:hover {
 }
 
 p {
-    margin-top: 16px;
+    margin-top: 15px;
     color: #fff;
 }
 
 a {
     color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f0f0f0;
 }
 
 .error {
     color: red;
+}
+
+.logout-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    color: #fff;
+}
+
+.logout-btn i {
+    margin-right: 5px;
+}
+
+.currency-container {
+    margin-top: 20px;
+}
+
+.currency-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: left;
+}
+
+.currency-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.currency-container button:hover {
+    background-color: #0056b3;
 }
