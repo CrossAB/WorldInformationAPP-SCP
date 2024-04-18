@@ -33,6 +33,26 @@ function displayCountryInfo(countryInfo) {
         <p><strong>Subregion:</strong> ${countryInfo.subregion}</p>
         <p><strong>Languages:</strong> ${countryInfo.languages.join(', ')}</p>
     `;
-}
 
+}
+function convertCurrency() {
+    var amount = document.getElementById("amount").value;
+    var fromCurrency = document.getElementById("from_currency").value;
+    var toCurrency = document.getElementById("to_currency").value;
+
+    fetch(`http://currency.eba-qchvcgzv.us-east-1.elasticbeanstalk.com/convert?amount=${amount}&from_currency=${fromCurrency}&to_currency=${toCurrency}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to retrieve data from server.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById("result1").innerHTML = `${amount} ${fromCurrency} = ${data.converted_amount.toFixed(2)} ${toCurrency}`;
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById("result1").innerHTML = "An error occurred. Please try again later.";
+        });
+}
 
