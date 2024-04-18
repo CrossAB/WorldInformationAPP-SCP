@@ -107,7 +107,33 @@
         <div id="result"></div>
         <a href="{{ url_for('logout') }}" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a> <!-- Add logout icon -->
     </div>
+   <div class="dropdown">
+                    <button class="dropbtn">Currency exchange
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <label for="amount">Amount:</label>
+                        <input type="number" id="amount" name="amount" value="1">
+                        <label for="from_currency">From:</label>
+                        <select id="from_currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <!-- Add other currencies here -->
+                        </select>
+                        <label for="to_currency">To:</label>
+                        <select id="to_currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <!-- Add other currencies here -->
+                        </select>
+                        <button class="button-57" role="button" onclick="convertCurrency()">Convert<span>Currency</span></button>
+                        <div id="result1"></div>
 
+      </div>              </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>
