@@ -10,6 +10,7 @@ app = Flask(__name__, template_folder='templates')
 CORS(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
+NEWS_API_URL = 'http://scaleable.eba-hk2jstsk.us-east-1.elasticbeanstalk.com/news'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
@@ -26,7 +27,8 @@ def is_logged_in():
 @app.route('/')
 def index():
     if is_logged_in():
-        return render_template('index.html')
+        news_data = fetch_news()
+        return render_template('index.html', news=news_data)
     else:
         return redirect(url_for('login'))
 
@@ -72,6 +74,14 @@ def logout():
 def users():
     users = User.query.all()
     return render_template('users.html', users=users)
+
+def fetch_news():
+    response = requests.get(NEWS_API_URL)
+    if response.status_code == 200:
+        news_data = response.json()
+        return news_data
+    else:
+        return []
 
 if __name__ == '__main__':
     with app.app_context():  # Create an application context

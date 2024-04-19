@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to your CSS file -->
 </head>
 <body>
+    <a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a> <!-- Move logout button outside the container -->
     <div class="container">
         <h1>World Information</h1>
         <label for="country">Enter a country name:</label>
         <input type="text" id="country" placeholder="Enter country name">
         <button onclick="getCountryInfo()"><i class="fas fa-search"></i> Get Information</button> <!-- Add search icon -->
         <div id="result"></div>
-        <a href="{{ url_for('logout') }}" class="logout-btn">Logout <i class="fas fa-sign-out-alt"></i></a> <!-- Add logout icon -->
     </div>
     <div class="container currency-container">
         <h2>Currency Converter</h2>
@@ -37,7 +37,26 @@
         <button onclick="convertCurrency()">Convert Currency</button>
         <div id="result1"></div>
     </div>
-
+    <div class="container news-container">
+        <h1 class="text-center mb-4">BBC News - Top Headlines</h1>
+        <div class="row">
+            {% for article in news %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ article.urlToImage }}" class="card-img-top news-img" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <h5>Description: {{ article.description }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source">BBC News</span>
+                        <a href="{{ article.url }}" class="btn btn-bbc float-right" target="_blank">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script> <!-- Link to your JavaScript file -->
 </body>
